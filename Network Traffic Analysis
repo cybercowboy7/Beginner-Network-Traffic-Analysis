@@ -29,3 +29,12 @@ Common Traffic Analysis Tools
   - Network Taps:
     - Taps (Gigamon, Niagra-taps) are devices capable of taking copies of network traffic and sending them to another place for analysis. These can be in-line or out of band. They can actively capture 
     and analyze the traffic directly or passively by putting the original packet back on the wire as if nothing had changed.
+
+  - Networking SPAN Ports:
+    - Span ports are a way to copy frames from layer two or three networking devices during egress or ingress processing and send them to a collection point. Often a port is mirrored to send those copies to a log server.
+
+  - Elastic Stack:
+    - The Elastic Stack is culmination of tools that can take data from many sources, ingest data, and visualize it, to enable searching and analysis of it
+
+  - SIEMS:
+    - Central point in which data is analyzed and visualized. Alerting, forensic analysis, and day-to-day checks against the traffic are all use cases for a SIEM
