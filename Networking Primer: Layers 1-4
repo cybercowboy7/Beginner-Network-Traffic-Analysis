@@ -1,1 +1,168 @@
 
+OSI/TCP-IP Model
+
+OSI Model:
+
+  Host Layers:
+
+      - Layer 7: Application 
+        - FTP, HTTP
+
+      - Layer 6: Presenation
+        - JPG, PNG, SSL, TLS
+
+      - Layer 5: Session
+        - NetBIOS
+
+      - Layer 4: Transport
+        - TCP, UDP
+
+  Media Layers:
+
+      - Layer 3: Network
+        - Router, L3 Switch
+
+      - Layer 2: Data Link Layer
+        - Switch, Bridge
+
+      - Layer 1: Physical 
+        - Network Card
+
+TCP/IP Model:
+
+  Host Layers:
+
+    - Layer 4: Application
+      - Consists of OSI Layers:
+        - 7 (Application)
+        - 6 (Presentation)
+        - 5 (Session)
+
+    - Layer 3: Transport
+
+  Media Layers:
+
+    - Layer 2: Internet
+
+    - Layer 1: Link
+      - Consists of OSI Layers:
+        - 2 (Data Link)  
+        - 1 (Physical)
+
+Protocol Data Unit (PDU)
+
+    PDU Flow throught TCP IP Model:
+
+        - Layer 1 ---> Bit
+
+        - Layer 2 ---> Frame
+
+        - Layer 3 ---> Packet
+
+        - Layer 4 ---> Segment/Datagram
+
+        - Layer 5 ---> Data
+
+    Sender Encapsulates Data and the receiver will Decapsulates
+
+
+MAC-Addressing:
+
+    - 48 bit six octet address in hex
+
+    - Utilized in layer 2 
+
+    - Host to host communication within a broadcast domain
+
+    - If layer 2 traffic needs to cross a layer 3 interface, that PDU is sent to the layer 3 egress interface, and it is routed to the correct network
+
+    - At layer 2 this looks as though the PDU is addressed to the router interface, and the router will take the layer 3 address when determining where to send it next
+
+    - Once it makes a choice, it strips the encapsulation at layer two and replaces it with new information that indicates the next physical address in the route
+
+IP Addressing:
+
+    - Devlivers data from one host to another across network boundaries
+
+    - Connectionless protocol that provides no assurances that data will reach its intended recipient
+
+    - IP relies on transport layer protocols for validation of data and reliability
+
+IPv4:
+
+    - Most common IP address
+
+    - 32-bit four octet number in decimal format
+
+    - each octet can range between 0-255
+
+
+IPv6:
+
+    - IPv4 pool ran out so they created Variable-lenght subnet masks and Classless Inter-Domain Routing (CIDR) allowing us to redefine the useable IP addresses in the IPv4 format changing how addresses were
+    assigned to users
+
+    - Second, IPv6 was created. 128-bit address 16 octects in hex format
+
+    - Utilizes four main types of addresses within its schema:
+      - Unicast: Addresses for a single interface.
+      - Anycast: Addresses for multiple interfaces, where only one of them receives the packet.
+      - Multicast: Addresses for multiple interfaces, where all of them receive the same packet.
+      - Broadcast: Does not exist and is realized with multicast addresses.
+
+TCP / UDP, Transport Mechanisms:
+
+    - Control hub
+
+    - In charge of reassembling the encapsulated data back in the correct order
+
+    - TCP:
+      - Connection Oriented
+      - TCP uses a three-way handshake to ensure that a connection is established
+      - Stream-based conversations
+      - Sequence and Acknowledge numbers are utilized to account for data
+      - TCP has more overhead and is slower because of its built-in functions
+
+    - UDP:
+      - Connectionless
+      - Does not ensure the destination is listening
+      - Packet by packet, the source does not care if the destination is active
+      - UDP is unreliable
+
+TCP Three-Way Handashake:
+
+    - Sessions are established through what is called a three-way handshake
+
+    - 3-Way handshake overview:
+      - Client sends a packet with the SYN flag set to ON along with other negotiable options in the TCP header
+        - This is a synchronization packet. It will only be set in the first packet from host and server and enables establishing a session by allowing both ends to agree on a sequence number to start comms
+        - This is crucial fo rhte tracking of packets. Along with the sequence number sync, many other options are negotiated in this phase to include window size, max segment size, and selective acks
+
+      - The server will respond with TCP packets that includes a SYN flag set for the sequence number negotiation and an ACK flag set to acknowledge the previous SYN packet sent by the host  
+        - The server will also include any changes to the TCP options it requires in the options fields of the TCP header
+
+      - The client will respond with a TCP packet with an ACK flag set agreeing to the negotiation
+        - This packet is the end of the handshake and established the connection between client and server
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
