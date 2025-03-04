@@ -38,3 +38,41 @@ Common Traffic Analysis Tools
 
   - SIEMS:
     - Central point in which data is analyzed and visualized. Alerting, forensic analysis, and day-to-day checks against the traffic are all use cases for a SIEM
+
+BPF Syntax:
+
+  - Berkeley Packet Filter Syntax (BPF)
+
+  - Enables a raw interface to read and write from th Data-Link Layer
+
+  - https://www.ibm.com/docs/en/qsip/7.4?topic=queries-berkeley-packet-filters
+
+NTA Workflow:
+
+  - Problem ---> Ingest Traffic ---> Reduce Noise by Filtering ---> Analyze and Explore ---> Detect and Alert
+
+  - Reduce Noise by Filtering:
+    - Once we complete initial capture, an attempt to filter out unnecessary traffic from our view can make analysis easier (Broadcast and Multicast traffic, for example)
+
+  - Analyze and Explore:
+    - Specific hosts, protocols and even things as specific as flags set in the TCP header. Following questions will help:
+      - Is the traffic encrypted or plain text? Should it be?
+      - Can we see users attempting to access resources to which they should not have access?
+      - Are different hosts talking to each other that typically do not?
+
+  - Detect and Alert:
+    - Are we seeing any errors? Is a device not responding that should be?
+
+    - Use our analysis to decide if what we see is benign or potentially malicious.
+
+    - Other tools like IDS and IPS can come in handy at this point. They can run heuristics and signatures against the traffic to determine if anything within is potentially malicious.
+
+
+
+
+
+
+
+
+
+
