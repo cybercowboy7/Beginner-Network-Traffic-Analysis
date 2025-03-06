@@ -1,0 +1,107 @@
+Descriptive Analysis:
+
+- Describes a data set based on individual characteristics. It helps detect possible error in data collection and/or outliers in the data set
+
+- What is the issue?
+    - Suspected breach?
+    - Networking Issue?
+
+- Define our scope and the goal. (What are we looking for? Which time period?)
+    - Target: multiple hosts potentially downloading a malicious file from bad.example.com
+    - When: Within the last 48 hours + 2 hours from now
+    - Supporting info: Filenames/types 'superbad.exe' 'new-crypto-miner.exe'
+
+- Define our target(s) (net / hosts / protocol)
+    - Scope: 192.168.100.0/24 network, protocols used were HTTP and FTP
+
+
+Diagnostic Analysis:
+
+- Clarifies the causes, effectsm and interactions of conditions. 
+
+- Capture network traffic:
+    - Plug into a link with access to the 192.168.100.0/24 network to capture live traffic 
+    to try and grab one of the executables in transfer. See if an admin can pull PCAP and/or 
+    netflow data from our SIEM for the historical data.
+
+- Identification of required network traffic components (filtering):
+    - Once we have traffic, filter out any packets not needed for this investigation to include; 
+    any traffic that matches our common baseline and keep anything relevant to the scope of the 
+    investigation. For example, HTTP and FTP from the subnet, anything transferring or containing 
+    a GET request for the suspected executable files.
+
+- An understanding of captured network traffic:
+    - Once we have filtered out the noise, it is time to dig for our targets—filter on things like 
+    ftp-data to find any files transferred and reconstruct them. For HTTP, we can filter on 
+    http.request.method == "GET" to see any GET requests that match the filenames we are searching for. 
+    This can show us who has acquired the files and potentially other transfers internal to the network 
+    on the same protocols.
+
+
+Predictive Analysis:
+
+- Creates a predictive model for future probabilities. 
+
+- Makes it possible to ID trends, detect deviations from expected values at an early stage, and predict future 
+occurrences as accurately as possible.
+
+- Note-taking and mind mapping of the found results:
+    - Annotating everything we do, see, or find throughout the investigation is crucial. Ensure we are taking ample notes, including:
+        - Timeframes we captured traffic during.
+        - Suspicious hosts within the network.
+        - Conversations containing the files in question. ( to include timestamps and packet numbers)
+
+- Summary of the analysis (what did we find?):
+    - Finally, summarize what we have found explaining the relevant details so that superiors can decide to quarantine the affected 
+    hosts or perform more significant incident response.
+
+    - Our analysis will affect decisions made, so it is essential to be as clear and concise as possible.
+
+
+Basic Analysis Template:
+
+
+What is the issue?
+Suspected breach? Networking issue?
+
+Define our scope and the goal (what are we looking for? which time period?)
+target: multiple hosts potentially downloading a malicious file from bad.example.com
+when: within the last 48 hours + 2 hours from now.
+supporting info: filenames/types 'superbad.exe' 'new-crypto-miner.exe'
+
+Define our target(s) (net / host(s) / protocol)
+scope: 192.168.100.0/24 network protocols used were HTTP and FTP.
+
+Capture network traffic
+plug into a link with access to the 192.168.100.0/24 network to capture live traffic to try and grab one of the executables in transfer. 
+See if an admin can pull PCAP and/or netflow data from our SIEM for the historical data.
+
+Identification of required network traffic components (filtering)
+once we have traffic, filter out any traffic not needed for this investigation to include; any traffic that matches our common baseline 
+and keep anything relevant to the scope. `HTTP and FTP from the subnet, anything transferring or containing a GET request for the suspected executable files.
+
+An understanding of captured network traffic
+Once we have filtered out the noise, it's time to dig for our targets—filter on things like ftp-data to find any files transferred and reconstruct them. 
+For HTTP, we can filter on http.request.method == "GET" to see any GET requests that match the filenames we are searching for. This can show us who has 
+acquired the files and potential other transfers internal to the network on the same protocols.
+
+Note-taking and mind mapping of the found results.
+Annotating everything we do, see, or find throughout the investigation is crucial. Ensure we are taking ample notes, including:
+Timeframes we captured traffic during.
+Suspicious hosts within the network.
+Conversations containing the files in question. ( to include timestamps and packet numbers)
+
+Summary of the analysis (what did we find?)
+Finally, summarize what has been found, explaining the relevant details so that superiors can make an informed decision to quarantine the affected hosts or perform more significant incident response.
+Our analysis will affect decisions made, so it is essential to be as clear and concise as possible.
+
+
+
+
+
+
+
+
+
+
+
