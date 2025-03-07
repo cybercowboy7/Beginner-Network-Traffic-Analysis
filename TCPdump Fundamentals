@@ -1,0 +1,64 @@
+What is it?
+
+- CLI packet sniffer that can directly capture and interpret data frames from a file or network interface.
+
+- Has a windows twin called WinDump
+
+- To capture "off the wire" traffic it uses pcap and libpcap paired with an interface in promiscuous mode to listen for data.
+
+- Must be root or admin to run the tool
+
+Install Tcpdump:
+
+sudo apt install tcpdump
+
+
+Tcpdump Version Validation:
+
+sudo tcpdump --version
+
+
+Tcpdump Manpage:
+
+https://www.cyberciti.biz/howto/question/man/tcpdump-man-page-with-examples.php
+
+
+Choosing an int. to capture from:
+
+sudo tcpdump -D
+  - Lists interfaces you can capture from 
+
+sudo tcpdump -i eth0
+  - Selects the interface eth0 to capture traffic from
+
+sudo tcpdump -i eth0 -nn
+  - Tells tcpdump to refain from resolving ip addresses and port numbers to their hostnames and common port names
+
+sudo tcpdump -i eth0 -e
+  - Telling tcpdump to include the ethernet headers in the capture's output along with its regular content
+
+sudo tcpdump -i eth0 -X
+  - Can see the packet clearer. -x gies us ASCII output on the right to interpret anything in clear text that corresponds to hex output on the left
+
+sudo tcpdump -i eth0 -nnvXX
+  - combination of known switches (best practice to utilize combination of switches)
+
+
+
+File Input/Output with Tcpdump:
+
+- utilize -w to write capture to a file
+
+  sudo tcpdump -i eth0 -w ~/output.pcap
+
+
+Reading Output from a file
+
+  sudo tcpdump -r ~/output.pcap
+
+
+
+
+
+
+
